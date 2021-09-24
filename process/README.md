@@ -46,6 +46,7 @@ PROCESS_NUM=1
 LOG_FILE=bsc_process.log
 WEBHOOK_URL=https://webhook.exinwork.com/api/send?access_token
 ACCESS_TOKEN=YOUR_ACCESS_TOKEN
+LARK_WEBHOOK_URL=https://open.larksuite.com/open-apis/bot/v2/hook/
 ```
 
 Add crontab like this in the server.
@@ -53,6 +54,9 @@ Add crontab like this in the server.
 ``` bash
 # BSC node process monitor
 * * * * * cd /data/monitor/exinpool/BSC/process && bash bsc_process.sh >> bsc_process.log &
+
+# You can also send message to Lark.
+* * * * * cd /data/monitor/exinpool/BSC/process && bash bsc_process_lark.sh >> bsc_process.log &
 ```
 
 The crontab will run every minute then you can check the log in the `bsc_process.log`.
@@ -61,7 +65,8 @@ The crontab will run every minute then you can check the log in the `bsc_process
 
 - Monitor BSC node process
 - Send alarm message when node is abnormal
-- Send alarm message via Webhook which based on Mixin API
+- Send alarm message to Mixin Messenger via Webhook which based on Mixin API
+- Send alarm message to Lark which based on Lark webhook API
 
 ## Contributing
 
