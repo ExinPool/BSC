@@ -20,8 +20,7 @@ remote_host_second="$(config_get REMOTE_HOST_SECOND)"
 abs_num="$(config_get ABS_NUM)"
 node_id="$(config_get NODE_ID)"
 log_file="$(config_get LOG_FILE)"
-webhook_url="$(config_get WEBHOOK_URL)"
-access_token="$(config_get ACCESS_TOKEN)"
+lark_webhook_url="$(config_get LARK_WEBHOOK_URL)"
 
 local_blocks_hex=`curl -X POST ${local_host} -H "Content-Type: application/json" --data '{"jsonrpc":"2.0", "method":"eth_blockNumber", "params":[], "id":83}' | jq | grep result | sed "s/\"//g" | awk -F':' '{print $2}' | sed "s/ //g" | sed "s/0x//g"`
 local_blocks=`echo $((16#${local_blocks_hex}))`
