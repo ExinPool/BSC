@@ -54,11 +54,11 @@ Add crontab like this in the server.
 
 ``` bash
 # BSC node blocks monitor
-* * * * * cd /data/monitor/exinpool/BSC/blocks && bash bsc_blocks.sh >> bsc_blocks.log &
+*/5 * * * * cd /data/monitor/exinpool/BSC/blocks && bash bsc_blocks.sh >> bsc_blocks.log &
 
 # You can also send message to Lark.
 # BSC node blocks monitor
-* * * * * cd /data/monitor/exinpool/BSC/blocks && bash bsc_blocks_lark.sh >> bsc_blocks.log &
+*/5 * * * * cd /data/monitor/exinpool/BSC/blocks && bash bsc_blocks_lark.sh >> bsc_blocks.log &
 ```
 
 The crontab will run every minute then you can check the log in the `bsc_blocks.log`.
