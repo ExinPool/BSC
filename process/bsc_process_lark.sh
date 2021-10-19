@@ -18,8 +18,7 @@ process="$(config_get PROCESS)"
 process_num="$(config_get PROCESS_NUM)"
 process_num_var=`sudo netstat -langput | grep LISTEN | grep $process | wc -l`
 log_file="$(config_get LOG_FILE)"
-webhook_url="$(config_get WEBHOOK_URL)"
-access_token="$(config_get ACCESS_TOKEN)"
+lark_webhook_url="$(config_get LARK_WEBHOOK_URL)"
 
 if [ ${process_num} -eq ${process_num_var} ]
 then
