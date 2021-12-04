@@ -34,6 +34,13 @@ echo $log >> $log_file
 local_first=$((local_blocks - remote_first_blocks))
 local_second=$((local_blocks - remote_second_blocks))
 
+if [ ${remote_first_blocks} -eq 0 ] || [ ${remote_second_blocks} -eq 0 ]
+then
+    log="时间: `date '+%Y-%m-%d %H:%M:%S'` UTC \n主机名: `hostname` \n节点: ${local_host}, ${local_blocks} \n远端节点 1: ${remote_host_first}, ${remote_first_blocks} \n远端节点 2: ${remote_host_second}, ${remote_second_blocks} \n状态: 远端节点区块为 0，停止检测。"
+    echo -e $log >> $log_file
+    exit 1
+fi
+
 if [ ${local_first#-} -gt ${abs_num} ] && [ ${local_second#-} -gt ${abs_num} ]
 then
     log="时间: `date '+%Y-%m-%d %H:%M:%S'` UTC \n主机名: `hostname` \n节点: ${local_host}, ${local_blocks} \n远端节点 1: ${remote_host_first}, ${remote_first_blocks} \n远端节点 2: ${remote_host_second}, ${remote_second_blocks} \n状态: 区块数据不同步。"
